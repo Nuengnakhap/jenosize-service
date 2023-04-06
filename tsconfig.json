@@ -40,6 +40,8 @@
       "@configs/*": ["src/configs/*"],
       "@controllers": ["src/controllers"],
       "@controllers/*": ["src/controllers/*"],
+      "@services": ["src/services"],
+      "@services/*": ["src/services/*"],
       "@validators": ["src/validators"],
       "@validators/*": ["src/validators/*"],
       "@declarations": ["src/declarations"],

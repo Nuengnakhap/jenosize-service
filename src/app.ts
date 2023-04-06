@@ -1,10 +1,16 @@
+import "dotenv/config";
+
 import createError from "http-errors";
 import express, { Request, Response } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import session from "express-session";
+import passport from "passport";
 
-import indexRouter from "./routes/index";
+import indexRouter from "./routes";
+
+import "@utils/passport";
 
 var app = express();
 
@@ -14,9 +20,19 @@ app.set("view engine", "jade");
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(express.static(path.join(__dirname, "../public")));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", indexRouter);
 
