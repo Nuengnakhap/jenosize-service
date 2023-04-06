@@ -1,0 +1,32 @@
+{
+    "presets": [
+      "@babel/preset-typescript",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": ["./src"],
+          "alias": {
+            "@routes": "./src/routes",
+            "@repos": "./src/repos",
+            "@utils": "./src/utils",
+            "@configs": "./src/configs",
+            "@controllers": "./src/controllers",
+            "@validators": "./src/validators",
+            "@declarations": "./src/declarations",
+            "@socket": "./src/socket"
+          }
+        }
+      ]
+    ]
+  }
+  
