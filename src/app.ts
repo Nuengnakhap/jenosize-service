@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import session from "express-session";
 import passport from "passport";
+import cors from "cors";
 
 import indexRouter from "./routes";
 
@@ -18,6 +19,7 @@ var app = express();
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "jade");
 
+app.use(cors({ origin: true, credentials: true }))
 app.set('trust proxy', 1);
 app.use(logger("dev"));
 app.use(express.json());
